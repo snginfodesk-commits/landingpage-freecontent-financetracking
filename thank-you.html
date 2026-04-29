@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>תודה! הטבלה בדרך אליכם, צמד ברזל</title>
+<meta name="description" content="הטבלה נשלחה לכתובת המייל שלכם. הצטרפו עכשיו לקבוצת הוואטסאפ של צמד ברזל." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1f3d;
+    --navy-dark: #061328;
+    --navy-light: #142d52;
+    --gold: #b08456;
+    --gold-light: #d4a574;
+    --gold-dark: #8a6440;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #5a6478;
+    --whatsapp: #25D366;
+    --whatsapp-dark: #1da851;
+    --shadow: 0 10px 40px rgba(10, 31, 61, 0.12);
+    --shadow-lg: 0 25px 60px rgba(10, 31, 61, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Heebo', 'Assistant', sans-serif;
+    background-color: var(--cream);
+    background-image:
+      linear-gradient(rgba(176, 132, 86, 0.11) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(176, 132, 86, 0.11) 1px, transparent 1px);
+    background-size: 56px 56px;
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 17px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-float {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    z-index: 95;
+    display: block;
+    transition: transform 0.25s ease;
+    text-decoration: none;
+  }
+  .logo-float:hover { transform: translateY(-3px); }
+  .logo-float img {
+    height: 64px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Hero confirmation */
+  .confirm {
+    background-color: var(--navy);
+    background-image:
+      linear-gradient(rgba(212, 165, 116, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 165, 116, 0.09) 1px, transparent 1px),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    background-size: 56px 56px, 56px 56px, 100% 100%;
+    color: var(--white);
+    padding: 70px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .confirm::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(176, 132, 86, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .confirm-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .check {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: var(--white);
+    font-weight: 900;
+    box-shadow: 0 15px 40px rgba(176, 132, 86, 0.4);
+    animation: pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .confirm h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+  .confirm h1 .gold { color: var(--gold-light); }
+  .confirm .lead {
+    font-size: 19px;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 0;
+  }
+
+  /* Email notice */
+  .notice {
+    max-width: 640px;
+    margin: -40px auto 0;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 30px 32px;
+    box-shadow: var(--shadow-lg);
+    border-right: 5px solid var(--gold);
+    position: relative;
+    z-index: 2;
+  }
+  .notice .row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .notice .icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: rgba(176, 132, 86, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .notice h2 {
+    color: var(--navy);
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .notice p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .notice p strong { color: var(--navy); font-weight: 700; }
+
+  /* WhatsApp CTA section */
+  .wa-section {
+    padding: 70px 20px 50px;
+    text-align: center;
+  }
+  .wa-section .container { max-width: 720px; margin: 0 auto; }
+  .wa-section .eyebrow {
+    color: var(--gold-dark);
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .wa-section h2 {
+    color: var(--navy);
+    font-size: clamp(26px, 3.5vw, 34px);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .wa-section h2 .gold { color: var(--gold-dark); }
+  .wa-section p.intro {
+    color: var(--text-muted);
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 30px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .wa-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 36px 30px;
+    box-shadow: var(--shadow);
+    border-top: 5px solid var(--whatsapp);
+    text-align: right;
+  }
+  .wa-perks {
+    list-style: none;
+    margin: 24px 0 28px;
+  }
+  .wa-perks li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .wa-perks li::before {
+    content: '✓';
+    background: var(--whatsapp);
+    color: var(--white);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+  .wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, var(--whatsapp) 0%, var(--whatsapp-dark) 100%);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 14px;
+    font-size: 19px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.4);
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .wa-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 38px rgba(37, 211, 102, 0.55);
+  }
+  .wa-btn svg { width: 26px; height: 26px; flex-shrink: 0; }
+
+  /* Steps mini-reminder */
+  .reminder {
+    background-color: var(--white);
+    background-image:
+      linear-gradient(rgba(176, 132, 86, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(176, 132, 86, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    padding: 50px 20px 70px;
+  }
+  .reminder .container { max-width: 800px; margin: 0 auto; }
+  .reminder h3 {
+    text-align: center;
+    color: var(--navy);
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 30px;
+  }
+  .reminder h3 .gold { color: var(--gold-dark); }
+  .mini-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .mini-step {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 22px 20px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .mini-step:hover { border-color: var(--gold); }
+  .mini-step .n {
+    width: 36px;
+    height: 36px;
+    background: var(--navy);
+    color: var(--gold-light);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+  .mini-step strong {
+    display: block;
+    color: var(--navy);
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .mini-step span {
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  footer {
+    background-color: var(--navy-dark);
+    background-image:
+      linear-gradient(rgba(212, 165, 116, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 165, 116, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 26px 20px;
+    font-size: 13px;
+    margin-top: auto;
+  }
+  footer .brand { color: var(--gold-light); font-weight: 700; }
+
+  @media (max-width: 720px) {
+    .confirm { padding: 50px 18px 70px; }
+    .notice { padding: 24px 22px; margin: -30px 16px 0; }
+    .notice .row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .wa-section { padding: 50px 18px 40px; }
+    .wa-card { padding: 28px 22px; }
+    .mini-steps { grid-template-columns: 1fr; }
+    .check { width: 76px; height: 76px; font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="logo-float" aria-label="צמד ברזל">
+  <img src="assets/logo-gold.png" alt="צמד ברזל יזמות ונדל״ן" />
+</a>
+
+<section class="confirm">
+  <div class="confirm-inner">
+    <div class="check">✓</div>
+    <h1><span class="gold">הטבלה</span> בדרך אליך</h1>
+    <p class="lead">שלחנו את הקובץ ישירות לתיבת המייל שמילאת. עוד דקה והוא אצלך.</p>
+  </div>
+</section>
+
+<div class="notice">
+  <div class="row">
+    <div class="icon">📩</div>
+    <div>
+      <h2>לא רואים את המייל?</h2>
+      <p>
+        לפעמים המייל הראשון מאיתנו <strong>מגיע לתיקיית הספאם / קידומי מכירות</strong>.
+        שווה לבדוק שם ולסמן אותנו כ"לא ספאם" — ככה לא תפספסו את החומרים הבאים שאנחנו שולחים.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="wa-section">
+  <div class="container">
+    <div class="eyebrow">★ הצעד הבא שלכם</div>
+    <h2>הצטרפו <span class="gold">לקהילת צמד ברזל</span> בוואטסאפ</h2>
+    <p class="intro">
+      הטבלה היא רק ההתחלה. בקבוצה תקבלו תוכן חינמי ומעשי, כל ההמשך של "איך הופכים כסף לעוד כסף".
+    </p>
+
+    <div class="wa-card">
+      <ul class="wa-perks">
+        <li>טיפים שבועיים על התנהלות פיננסית חכמה</li>
+        <li>תכנים מעשיים על נדל״ן והשקעות</li>
+        <li>קהילה תומכת של אנשים שעושים את זה באמת</li>
+        <li>גישה ראשונה למסמכים, סדנאות וכלים חדשים</li>
+      </ul>
+      <a class="wa-btn" href="https://chat.whatsapp.com/CZxdM5QHuOhI8iyQMgCEVn?mode=gi_t" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        הצטרפו לקבוצת הוואטסאפ עכשיו ←
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="reminder">
+  <div class="container">
+    <h3>תזכורת קצרה: <span class="gold">איך עובדים עם הטבלה</span></h3>
+    <div class="mini-steps">
+      <div class="mini-step">
+        <div class="n">1</div>
+        <strong>תכנון</strong>
+        <span>10 דקות בתחילת חודש</span>
+      </div>
+      <div class="mini-step">
+        <div class="n">2</div>
+        <strong>מעקב</strong>
+        <span>עדכון קצר פעם בשבוע</span>
+      </div>
+      <div class="mini-step">
+        <div class="n">3</div>
+        <strong>מסקנות</strong>
+        <span>הסתכלות חודשית על האמת</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 <span class="brand">צמד ברזל יזמות ונדל"ן</span> · קהילת המשקיעים והרוכשים המובילה בישראל
+</footer>
+
+</body>
+</html>
