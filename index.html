@@ -555,12 +555,63 @@
     tick();
   })();
 
-  // Form handler — placeholder until backend is connected
-  document.getElementById('leadForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    // TODO: connect to email/lead system — for now just navigate to thank-you
-    window.location.href = 'thank-you.html';
-  });
+  // ========== FORM VALIDATION + SUBMIT ==========
+  (function () {
+    // ===== CRM integration (n8n shared workflow) =====
+    var WEBHOOK_URL = 'https://n8n.srv1270696.hstgr.cloud/webhook/888d530f-3e94-4178-a39a-b9e29694e037';
+    var LEAD_SOURCE = 'אינסטגרם DM';
+    var LEAD_RESPONSIBLE = 'רוסו';
+    var LEAD_LECTURE = 'טבלת ניהול תקציב';
+
+    var form = document.getElementById('leadForm');
+    var btn = form.querySelector('button[type="submit"]');
+    var nameInput = form.querySelector('input[name="name"]');
+    var phoneInput = form.querySelector('input[name="phone"]');
+    var emailInput = form.querySelector('input[name="email"]');
+
+    function validatePhone(v) {
+      var digits = v.replace(/\D/g, '');
+      return digits.length >= 9 && digits.length <= 11;
+    }
+    function validateEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    function submitLead(name, phone, email) {
+      var payload = { name: name, phone: phone, email: email, source: LEAD_SOURCE, responsible: LEAD_RESPONSIBLE, lectureName: LEAD_LECTURE };
+      return fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }).then(function (r) {
+        if (!r.ok) throw new Error('webhook returned ' + r.status);
+      }).catch(function (err) {
+        try {
+          var pending = JSON.parse(localStorage.getItem('tb_leads_pending') || '[]');
+          pending.push(Object.assign({}, payload, { ts: new Date().toISOString(), error: String(err) }));
+          localStorage.setItem('tb_leads_pending', JSON.stringify(pending));
+        } catch (_) {}
+      });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = nameInput.value.trim();
+      var phone = phoneInput.value.trim();
+      var email = emailInput.value.trim();
+
+      if (name.length < 2) { nameInput.focus(); return; }
+      if (!validatePhone(phone)) { phoneInput.focus(); return; }
+      if (!validateEmail(email)) { emailInput.focus(); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'שולח...';
+
+      submitLead(name, phone, email).finally(function () {
+        window.location.href = 'thank-you.html?name=' + encodeURIComponent(name);
+      });
+    });
+  })();
 </script>
 
 </body>
