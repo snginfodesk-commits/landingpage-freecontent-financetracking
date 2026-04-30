@@ -71,7 +71,7 @@
   }
   .logo-float:hover { transform: translateY(-3px); }
   .logo-float img {
-    height: 64px;
+    height: 109px;
     width: auto;
     display: block;
     filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
@@ -444,18 +444,48 @@
 
   /* Responsive */
   @media (max-width: 860px) {
-    .hero { padding: 40px 18px 60px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero { padding: 18px 18px 60px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 28px; }
     .steps { grid-template-columns: 1fr; gap: 22px; }
     .section { padding: 60px 18px; }
     .form-card { padding: 28px 22px; }
     .pain-text { font-size: 17px; }
     .tip { padding: 28px 24px; }
+
+    /* Convert floating logo to inline centered above hero on mobile */
+    .logo-float {
+      position: static;
+      top: auto;
+      right: auto;
+      display: block;
+      text-align: center;
+      padding: 14px 0 6px;
+    }
+    .logo-float img { height: 80px; margin: 0 auto; }
+
+    /* Form-card first, copy second on mobile */
+    .hero-inner > div:nth-child(1) { order: 2; }
+    .hero-inner > div:nth-child(2) { order: 1; }
+
+    /* Center hero text + slightly larger */
+    .hero-inner > div:nth-child(1) {
+      text-align: center;
+    }
+    .hero h1 { font-size: 32px; }
+    .hero .sub { font-size: 18px; }
+    .bullets {
+      display: inline-block;
+      text-align: right;
+      margin: 0 auto 28px;
+    }
+    .bullets li { font-size: 16px; }
+    .stars { font-size: 22px; }
   }
   @media (max-width: 480px) {
-    .hero h1 { font-size: 26px; }
+    .hero h1 { font-size: 28px; }
+    .hero .sub { font-size: 16px; }
     .topbar { font-size: 13px; }
-    header img { height: 56px; }
+    .logo-float img { height: 68px; }
   }
 </style>
 </head>
