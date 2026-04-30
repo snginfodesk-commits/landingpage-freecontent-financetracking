@@ -442,9 +442,12 @@
   }
   footer .brand { color: var(--gold-light); font-weight: 700; }
 
+  /* Mobile-only logo, sits below the form on a navy background */
+  .hero-logo-mobile { display: none; }
+
   /* Responsive */
   @media (max-width: 860px) {
-    .hero { padding: 18px 18px 60px; }
+    .hero { padding: 32px 18px 50px; }
     .hero-inner { grid-template-columns: 1fr; gap: 28px; }
     .steps { grid-template-columns: 1fr; gap: 22px; }
     .section { padding: 60px 18px; }
@@ -452,25 +455,26 @@
     .pain-text { font-size: 17px; }
     .tip { padding: 28px 24px; }
 
-    /* Convert floating logo to inline centered above hero on mobile */
-    .logo-float {
-      position: static;
-      top: auto;
-      right: auto;
-      display: block;
-      text-align: center;
-      padding: 14px 0 6px;
-    }
-    .logo-float img { height: 80px; margin: 0 auto; }
+    /* Hide the floating header logo on mobile — replaced by .hero-logo-mobile inside the hero */
+    .logo-float { display: none; }
 
-    /* Form-card first, copy second on mobile */
-    .hero-inner > div:nth-child(1) { order: 2; }
+    /* Order: form first, copy second, logo last — all on the navy hero background */
+    .hero-inner > div:nth-child(1) { order: 2; text-align: center; }
     .hero-inner > div:nth-child(2) { order: 1; }
-
-    /* Center hero text + slightly larger */
-    .hero-inner > div:nth-child(1) {
+    .hero-logo-mobile {
+      display: block;
+      order: 3;
       text-align: center;
+      margin-top: 4px;
     }
+    .hero-logo-mobile img {
+      height: 90px;
+      width: auto;
+      margin: 0 auto;
+      filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.45));
+    }
+
+    /* Slightly larger, centered hero text */
     .hero h1 { font-size: 32px; }
     .hero .sub { font-size: 18px; }
     .bullets {
@@ -485,7 +489,7 @@
     .hero h1 { font-size: 28px; }
     .hero .sub { font-size: 16px; }
     .topbar { font-size: 13px; }
-    .logo-float img { height: 68px; }
+    .hero-logo-mobile img { height: 76px; }
   }
 </style>
 </head>
@@ -533,6 +537,10 @@
         <button type="submit">שלחו לי את הטבלה החינמית ←</button>
         <div class="trust">הפרטים שלכם מוגנים. בלי ספאם, אפשר להסיר בכל רגע.</div>
       </form>
+    </div>
+
+    <div class="hero-logo-mobile" aria-hidden="true">
+      <img src="assets/logo-gold.png" alt="צמד ברזל יזמות ונדל״ן" />
     </div>
   </div>
 </section>
